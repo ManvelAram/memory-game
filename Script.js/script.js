@@ -1,17 +1,22 @@
 let cards = document.querySelectorAll('.card');
+let random = ['img1.png', 'img2.png', 'img3.png', 'img4.png'];
+random = random.concat(random).sort(() => (Math.random() > 0.5) ? 1 : -1);
+console.log(random);
 let lastClicked = 0;
 let lastClickedElement = null;
 
-[...cards].forEach((card)=>{
+
+[...cards].forEach((card, index)=>{
+  card.getElementsByClassName('back-image')[0].setAttribute('src', random[index]);
   card.addEventListener( 'click', function() {
-   card.classList.toggle('is-flipped');
-    
+   card.classList.toggle('is-flipped'); // Обеспечивает переварачивание card
+   
     setTimeout(()=>{
       let cardClicked = card.getElementsByClassName('card__face--front')[0].innerHTML;
-      if (!lastClicked || lastClickedElement == card) {
+      if (!lastClicked || lastClickedElement == card) {                             //Если второго клика не было или 
         lastClicked = card.getElementsByClassName('card__face--front')[0].innerHTML;
         lastClickedElement = card;
-        return
+        return 
       }
       if (cardClicked == lastClicked) {
         card.classList.add('hidden');
