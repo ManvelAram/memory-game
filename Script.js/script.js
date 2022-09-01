@@ -9,11 +9,11 @@ let lastClickedElement = null;
 [...cards].forEach((card, index)=>{
   card.getElementsByClassName('back-image')[0].setAttribute('src', random[index]);
   card.addEventListener( 'click', function() {
-   card.classList.toggle('is-flipped'); // Обеспечивает переварачивание card
+   card.classList.toggle('is-flipped'); 
    
     setTimeout(()=>{
       let cardClicked = card.getElementsByClassName('card__face--front')[0].innerHTML;
-      if (!lastClicked || lastClickedElement == card) {                             //Если второго клика не было или 
+      if (!lastClicked || lastClickedElement == card) {                             
         lastClicked = card.getElementsByClassName('card__face--front')[0].innerHTML;
         lastClickedElement = card;
         return 
